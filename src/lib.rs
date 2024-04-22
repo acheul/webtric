@@ -21,6 +21,7 @@ use error::{Error, Result};
 
 #[cfg(feature="sycamore")]
 pub use utils::WindowResizing;
+
 #[cfg(feature="leptos")]
 pub use utils::LeptosWindowResizing;
 
@@ -48,3 +49,5 @@ use wasm_bindgen::prelude::*;
 
 #[cfg(feature="sycamore")]
 use sycamore::prelude::*;
+#[cfg(feature="sycamore")]
+use web_sys::EventTarget;
