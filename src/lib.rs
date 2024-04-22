@@ -40,7 +40,7 @@ use std::{cmp::Eq, hash::Hash, str::FromStr};
 use hashbrown::{HashSet, HashMap};
 pub use rawn::{BoxRaw, BoxRaws};
 use serde::{Serialize, Deserialize};
-use web_sys::{Element, HtmlElement, Event, EventTarget, WheelEvent, PointerEvent};
+use web_sys::{Element, HtmlElement, Event, WheelEvent, PointerEvent};
 use wasm_bindgen::prelude::*;
 
 //#[allow(unused_imports)]
