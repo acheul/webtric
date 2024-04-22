@@ -11,7 +11,8 @@ readme = "README.md"
 license = "MIT"
 exclude = [
   "/demo-sycamore",
-  "/demo-leptos"
+  "/demo-leptos",
+  "/docs"
 ]
 
 [feature]
