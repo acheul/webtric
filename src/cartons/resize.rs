@@ -517,6 +517,7 @@ impl<T: Eq + Hash + FromStr + Clone + std::fmt::Debug> CartonsComplex<T> {
   /// Expand [`resize_work()`] for Sycamore.
   /// Initialte a resizer handler, which is attached to each carton and manually resizes with pointerdown/move event.
   /// 
+  /// *feature `sycamore`*
   #[cfg(feature="sycamore")]
   pub fn init_resizer<G: GenericNode>(
     complex: Signal<Self>,

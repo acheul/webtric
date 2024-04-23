@@ -245,6 +245,8 @@ impl ScrollMetric {
   ///   }
   /// }
   /// ```
+  /// 
+  /// *feature `sycamore`*
   #[cfg(feature="sycamore")]
   pub fn init_scrolling<G: GenericNode, U: Trackable + 'static>(
     x_take_ortho: bool,
@@ -478,6 +480,8 @@ impl ScrollMetric {
   /// 
   /// # Outputs
   /// (track_ref, thumb_ref, thumb_moving)
+  /// 
+  /// *feature `sycamore`*
   #[cfg(feature="sycamore")]
   pub fn init_scrollbar<G: GenericNode>(
     lateral: bool,
@@ -582,6 +586,8 @@ impl ScrollMetric {
   ///   }
   /// }
   /// ```
+  /// 
+  /// *feature `sycamore`*
   #[cfg(feature="sycamore")]
   pub fn init_scrolling_and_scrollbars<G: GenericNode, U: Trackable + 'static>(
     x_take_ortho: bool,

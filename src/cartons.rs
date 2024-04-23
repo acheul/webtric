@@ -438,6 +438,8 @@ impl<T: Eq + Hash + FromStr + Clone + std::fmt::Debug> CartonsComplex<T> {
   /// 
   /// # Outputs
   /// * wrap_ref
+  /// 
+  /// *feature `sycamore`*
   #[cfg(feature="sycamore")]
   pub fn init_wrap<G: GenericNode, U: Trackable + 'static>(
     complex: Signal<Self>,
@@ -494,6 +496,8 @@ impl<T: Eq + Hash + FromStr + Clone + std::fmt::Debug> CartonsComplex<T> {
 
   /// Expand [`passive_wrap_effect_on_update`] for Sycamore.
   /// Initiate a passive wrapping complex, which would update sizing passively by signal `complex`'s metric data.
+  /// 
+  /// *feature `sycamore`*
   #[cfg(feature="sycamore")]
   pub fn init_passive_wrap<G: GenericNode>(
     complex: Signal<Self>,

@@ -4,7 +4,9 @@ use crate::*;
 
 /// NewType wrapping Signal<bool>, which would be listening to window's resize event.
 /// 
-/// It can be used to update window-size related environments, like custom scrollbar or sizing parallel panels. 
+/// It can be used to update window-size related environments, like custom scrollbar or sizing parallel panels.
+/// 
+/// *feature `sycamore`*
 #[cfg(feature="sycamore")]
 #[derive(Clone)]
 pub struct WindowResizing(pub Signal<bool>);
@@ -46,6 +48,8 @@ impl WindowResizing {
 
 
 /// Check [WindowResizing] of feature *sycamore*
+/// 
+/// *feature `leptos`*
 #[cfg(feature="leptos")]
 #[derive(Clone)]
 pub struct LeptosWindowResizing(pub leptos::ReadSignal<bool>);
@@ -71,6 +75,8 @@ impl LeptosWindowResizing {
 
 
 /// Helper to add or remove a class to NodeRef's element
+/// 
+/// *feature `sycamore`*
 #[cfg(feature="sycamore")]
 pub fn alter_class<G: GenericNode>(node: NodeRef<G>, class: &str, add: bool) {
   node.try_get::<DomNode>().map(|node| {
@@ -104,6 +110,9 @@ pub fn alter_class<G: GenericNode>(node: NodeRef<G>, class: &str, add: bool) {
 /// }
 /// # view! {}
 /// # }
+/// ```
+/// 
+/// *feature `sycamore`*
 #[cfg(feature="sycamore")]
 pub fn ref_get<G: GenericNode, T: wasm_bindgen::JsCast>(rf: NodeRef<G>) -> Option<T> {
   rf.try_get::<DomNode>().map(|x| x.unchecked_into::<T>())
@@ -183,7 +192,7 @@ pub fn size_pos_props<'a>(lateral: bool) -> (&'a str, &'a str) {
 }
 
 /// Retrieves a dataset value matching given dataset name.
-/// It tries to parse String value into generic <T> type. 
+/// It tries to parse String value into generic `<T>` type. 
 pub fn parse_dataset<H: AsRef<HtmlElement>, T: FromStr>(elem: H, name: &str) -> Option<T> {
   elem.as_ref().dataset().get(name)
     .map(|value| value.parse().ok()).flatten()
@@ -283,6 +292,8 @@ pub fn pointer_down_move_up(
 
 
 /// Expand `pointer_down_move_up` to make an element move with pointer's movement.
+/// 
+/// *feature `sycamore`*
 #[cfg(feature="sycamore")]
 pub fn pointer_down_move_up_moving<G: GenericNode>(
   rf: Option<NodeRef<G>>,
