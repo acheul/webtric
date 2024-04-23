@@ -1,7 +1,7 @@
 # Webtric = Web + Metric
 
 [![Crates.io](https://img.shields.io/crates/v/webtric)](https://crates.io/crates/webtric)
-[![docs.rs](https://img.shields.io/docsrs/webtric?color=blue&label=docs.rs)](https://docs.rs/webtric)
+[![docs.rs](https://img.shields.io/docsrs/webtric?label=docs.rs)](https://docs.rs/webtric)
 
 A wasm library to handle some metric matters of front web environment
 * Custom **scrollbar** => mod `scroll`
