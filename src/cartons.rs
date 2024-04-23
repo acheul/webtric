@@ -19,7 +19,7 @@ pub mod resize;
 
 
 /// Helper structure to store data of sizing rules and states.
-/// Generic <T> is a carton's dataset value type. Check [`parse_dataset()`] about this.
+/// Generic `<T>` is a carton's dataset value type. Check [`parse_dataset()`] about this.
 /// * Field `map` stores specific carton's data.
 /// * If a carton's name is not in the `map`, get field `default`'s value as fallback.
 #[derive(Default, Debug, Clone)]
@@ -30,7 +30,7 @@ pub struct CartonsMap<T: Eq + Hash + FromStr + Clone, V> {
 
 impl<T: Eq + Hash + FromStr + Clone, V: Default> Into<CartonsMap<T, V>> for Vec<(T, V)> {
   /// Build a [CartonsMap] from Vec<(T, V)>.
-  /// `default` field will be default value of <V>.
+  /// `default` field will be default value of `<V>`.
   fn into(self) -> CartonsMap<T, V> {
     CartonsMap {
       map: self.into_iter().collect(),

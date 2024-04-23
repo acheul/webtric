@@ -21,5 +21,5 @@ The page is built on Sycamore. It's src directory is at repository's `/demo-syca
 
 
 ## Dev Log
-* ver `0.1.0` -> `0.1.1`
-  * added feature flags missed in `0.1.0`
+* ver `0.1.0` -> `0.1.2`
+  * added feature flags missed in `0.1.0`'s doc.

@@ -345,7 +345,7 @@ impl ScrollMetric {
   /// # Args
   /// * lateral: Does the bar care about lateral scroll or vertical scroll?
   /// * scrolling: The scrolling element's possible wrapping reference of web_sys::Element
-  /// * get_elem: this closure should transforms `scrolling`'s type <X> into `AsRef<Element>`
+  /// * get_elem: this closure should transforms `scrolling`'s type `<X>` into `AsRef<Element>`
   ///   - We're using this to capture exact target element, which would be failed with `event.EventTarget`.
   /// * thumb_pointerdown_work: inner closure for scroll thumbs' pointerdown event.
   ///   - ex. do something to notify thumb's moving(scorlling) starts.
@@ -353,9 +353,9 @@ impl ScrollMetric {
   ///   - ex. do something to notify thumb's moving(scorlling) ends.
   /// 
   /// # Outputs
-  /// * track's pointerdown event listener: Closure<dyn FnMut(PointerEvent)>
-  /// * thumb's pointerdown event listener: Closure<dyn FnMut(PointerEvent)>
-  /// * raw pointers output(BoxRaws<(PointerMoveUpBoxRaws, *mut Option<f64>)>):
+  /// * track's pointerdown event listener: `Closure<dyn FnMut(PointerEvent)>`
+  /// * thumb's pointerdown event listener: `Closure<dyn FnMut(PointerEvent)>`
+  /// * raw pointers output(`BoxRaws<(PointerMoveUpBoxRaws, *mut Option<f64>)>`):
   ///   - they are raw pointers generated from thumb's pointerdown event listener closure.
   ///     Clean these raw pointer whenever the thumb's pointerdown event gets cleaned up.
   ///   - To clean them, use `clean()` method of `BoxRaws`. Check out [rawn](https://crates.io/crates/rawn) for more info about `BoxRaws`.
