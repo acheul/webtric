@@ -89,8 +89,8 @@ pub fn PosSize<G: Html>() -> View<G> {
 
     div(style="margin: 8px 16px;") {
       div() {
-        div() { "click somewhere to activate/deactivate fixed menubar" }
-        div() { "drag abs boxes and click them to activate absolute tooltip" }
+        div() { "click somewhere to activate/deactivate fixed menubar (red box)" }
+        div() { "drag abs boxes and click them to activate absolute tooltip (blue box)" }
         div() { "See how the menubar/tooltip are positioned according to their activated position"}
       }
       button(on:click=move |_| locate_boxes()) {"locate abs boxes"}

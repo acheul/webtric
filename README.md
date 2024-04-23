@@ -10,10 +10,11 @@ A wasm library to handle some metric matters of front web environment
 * and `sizon`
 
 See [the demo page](https://acheul.github.io/webtric) for live demo.
+The page is built on Sycamore. It's src directory is at repository's `/demo-sycamore`.
 
 ## Features
 * Feature `sycamore` supports some [sycamore](https://crates.io/crates/sycamore) native functions.
   Mind that webtric supports sycamore version of **0.9.0-beta.2** or later. Sycamore has big changes since version 0.9.
-  * Check repository's dir `demo-sycamore` for sycamore application.
+  * Check repository's `/demo-sycamore` for sycamore application.
 * ~~Feature `letops` suppoerts some [leptos](https://crates.io/crates/leptos) native functions~~
   * It's not yet mature.
