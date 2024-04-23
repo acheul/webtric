@@ -10,6 +10,7 @@ keywords = ["resize", "scroll", "sizon"]
 readme = "README.md"
 license = "MIT"
 exclude = [
+  "/test-sycamore",
   "/demo-sycamore",
   "/demo-leptos",
   "/docs"

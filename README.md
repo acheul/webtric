@@ -9,6 +9,7 @@ A wasm library to handle some metric matters of front web environment
 * **Reactive positioning** of tooltips or menubars => mod `possize`
 * and `sizon`
 
+See [the demo page](https://acheul.github.io/webtric) for live demo.
 
 ## Features
 * Feature `sycamore` supports some [sycamore](https://crates.io/crates/sycamore) native functions.

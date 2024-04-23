@@ -23,34 +23,36 @@ pub fn Scroll<G: Html>() -> View<G> {
   }));
 
   view! {
-    h1(style="margin-left: 16px;", id="scroll") { "Test Scroll"}
-    div(style="margin: 8px 16px;") {
-      CheckBox(name="lateral", signal=lateral)
-      CheckBox(name="take_orthogonal", signal=take_ortho)
-    }
-
-    // display metric
-    div(style="margin: 8px 16px;") {
-      div() {"metric(x):"}
-      div(style="margin-left: 8px;") {
-        div() { span() { "client_size: "} span() {(scroll_metric_.with(|x| x.x.client_size))}}
-        div() { span() { "scroll_size: "} span() {(scroll_metric_.with(|x| x.x.scroll_size))}}
-        div() { span() { "scroll_pos: "} span() {(scroll_metric_.with(|x| x.x.scroll_pos))}}
+    Index {
+      h1(style="margin-left: 16px;") { "Test Scroll"}
+      div(style="margin: 8px 16px;") {
+        CheckBox(name="lateral", signal=lateral)
+        CheckBox(name="take_orthogonal", signal=take_ortho)
       }
-      div() {"metric(y):"}
-      div(style="margin-left: 8px;") {
-        div() { span() { "client_size: "} span() {(scroll_metric_.with(|x| x.y.client_size))}}
-        div() { span() { "scroll_size: "} span() {(scroll_metric_.with(|x| x.y.scroll_size))}}
-        div() { span() { "scroll_pos: "} span() {(scroll_metric_.with(|x| x.y.scroll_pos))}}
+  
+      // display metric
+      div(style="margin: 8px 16px;") {
+        div() {"metric(x):"}
+        div(style="margin-left: 8px;") {
+          div() { span() { "client_size: "} span() {(scroll_metric_.with(|x| x.x.client_size))}}
+          div() { span() { "scroll_size: "} span() {(scroll_metric_.with(|x| x.x.scroll_size))}}
+          div() { span() { "scroll_pos: "} span() {(scroll_metric_.with(|x| x.x.scroll_pos))}}
+        }
+        div() {"metric(y):"}
+        div(style="margin-left: 8px;") {
+          div() { span() { "client_size: "} span() {(scroll_metric_.with(|x| x.y.client_size))}}
+          div() { span() { "scroll_size: "} span() {(scroll_metric_.with(|x| x.y.scroll_size))}}
+          div() { span() { "scroll_pos: "} span() {(scroll_metric_.with(|x| x.y.scroll_pos))}}
+        }
       }
+  
+      div(style="margin: 8px 6px;") {
+        button(style="margin-right: 8px;", on:click=move |_| { push_carton(cartons, vec![update_by], None) }) {"+ push to last"}
+        button(on:click=move |_| { pop_carton(cartons, vec![update_by]) }) {"- pop up first"}
+      }
+  
+      (demo.get_clone())
     }
-
-    div(style="margin: 8px 6px;") {
-      button(style="margin-right: 8px;", on:click=move |_| { push_carton(cartons, vec![update_by], None) }) {"+ push to last"}
-      button(on:click=move |_| { pop_carton(cartons, vec![update_by]) }) {"- pop up first"}
-    }
-
-    (demo.get_clone())
   }
 }
 

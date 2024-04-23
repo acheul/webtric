@@ -76,56 +76,41 @@ pub fn PosSize<G: Html>() -> View<G> {
   );
   let fixed_possize = create_signal(fixed_possize);
 
-  let locate_boxes = move || {
-    let Some(box1) = ref_get::<_, HtmlElement>(box_ref) else { return };
-    let Some(box2) = ref_get::<_, HtmlElement>(box_ref2) else { return };
-
-    box1.style().set_property("bottom", "200px").unwrap_throw();
-    box2.style().set_property("bottom", "200px").unwrap_throw();
-  };
 
   view! {
-    h1(style="margin-left: 16px;", id="possize") { "Test PosSize"}
-
-    div(style="margin: 8px 16px;") {
-      div() {
-        div() { "click somewhere to activate/deactivate fixed menubar" }
-        div() { "drag abs boxes and click them to activate absolute tooltip" }
-        div() { "See how the menubar/tooltip are positioned according to their activated position"}
+    Index {
+      h1(style="margin-left: 16px;") { "Test PosSize"}
+      div(style="margin: 8px 16px;") {
+        CheckBox(name="abs_front_x", signal=abs_front_x)
+        CheckBox(name="abs_outward_x", signal=abs_outward_x)
+        CheckBox(name="abs_front_y", signal=abs_front_y)
+        CheckBox(name="abs_outward_y", signal=abs_outward_y)
       }
-      button(on:click=move |_| locate_boxes()) {"locate abs boxes"}
-    }
 
-    div(style="margin: 8px 16px;") {
-      CheckBox(name="abs_front_x", signal=abs_front_x)
-      CheckBox(name="abs_outward_x", signal=abs_outward_x)
-      CheckBox(name="abs_front_y", signal=abs_front_y)
-      CheckBox(name="abs_outward_y", signal=abs_outward_y)
-    }
-
-    div(class="full", on:pointerdown=move |e: PointerEvent| {
-      fixed.set(!fixed.get());
-      if fixed.get() {
-        let xy = (e.client_x() as f64, e.client_y() as f64);
-        let possize = fixed_possize.get_untracked();
-        if let Some(x) = ref_get::<_, HtmlElement>(fixed_ref) {
-          possize.set_style(x, xy);
+      div(class="full", on:pointerdown=move |e: PointerEvent| {
+        fixed.set(!fixed.get());
+        if fixed.get() {
+          let xy = (e.client_x() as f64, e.client_y() as f64);
+          let possize = fixed_possize.get_untracked();
+          if let Some(x) = ref_get::<_, HtmlElement>(fixed_ref) {
+            possize.set_style(x, xy);
+          }
         }
+      }) {
+        div(ref=box_ref, class="possize-box", on:pointerdown=move |e: PointerEvent| e.stop_propagation()) {
+          button(on:click=move |_| abs.set(!abs.get())) {"abs"}
+          (if abs.get() { view! { 
+            div(ref=abs_ref, class="possize-abs", on:pointerdown=move |_| abs.set(!abs.get())) {} 
+          }} else { view! {}})
+        }
+        div(ref=box_ref2, class="possize-box", style="left: 200px;", on:pointerdown=move |e: PointerEvent| e.stop_propagation()) {
+          button(on:click=move |_| abs2.set(!abs2.get())) {"abs2"}
+          (if abs2.get() { view! { 
+            div(ref=abs_ref2, class="possize-abs", on:pointerdown=move |_| abs2.set(!abs2.get())) {} 
+          }} else { view! {}})
+        }
+        (if fixed.get() { view! { div(ref=fixed_ref, class="possize-fixed") }} else { view! {}})
       }
-    }) {
-      div(ref=box_ref, class="possize-box", on:pointerdown=move |e: PointerEvent| e.stop_propagation()) {
-        button(on:click=move |_| abs.set(!abs.get())) {"abs"}
-        (if abs.get() { view! { 
-          div(ref=abs_ref, class="possize-abs", on:pointerdown=move |_| abs.set(!abs.get())) {} 
-        }} else { view! {}})
-      }
-      div(ref=box_ref2, class="possize-box", style="left: 200px", on:pointerdown=move |e: PointerEvent| e.stop_propagation()) {
-        button(on:click=move |_| abs2.set(!abs2.get())) {"abs2"}
-        (if abs2.get() { view! { 
-          div(ref=abs_ref2, class="possize-abs", on:pointerdown=move |_| abs2.set(!abs2.get())) {} 
-        }} else { view! {}})
-      }
-      (if fixed.get() { view! { div(ref=fixed_ref, class="possize-fixed") }} else { view! {}})
     }
   }
 }

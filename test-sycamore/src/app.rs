@@ -1,8 +1,8 @@
 use web_sys::{Element, HtmlElement, PointerEvent};
 use webtric::*;
 use webtric::utils::*;
+use sycamore_router::{Route, Router, HistoryIntegration};
 use sycamore::prelude::*;
-use wasm_bindgen::prelude::*;
 #[allow(unused_imports)]
 use gloo_console::log;
 
@@ -11,6 +11,28 @@ mod cartons;
 mod possize;
 
 
+#[derive(Clone, Route)]
+pub enum Routes {
+  #[to("/")] Index,
+  #[to("/scroll")] Scroll,
+  #[to("/cartons")] Cartons,
+  #[to("/possize")] PosSize,
+  #[not_found] NotFound
+}
+
+fn switch<G: Html>(route: ReadSignal<Routes>) -> View<G> {
+  
+  let view = create_memo(on(route, move || match route.get_clone() {
+    Routes::Index => view! { Index },
+    Routes::Scroll => view! { scroll::Scroll },
+    Routes::Cartons => view! { cartons::Cartons },
+    Routes::PosSize => view! { possize::PosSize },
+    Routes::NotFound => view! { "Not Found" },
+  }));
+  
+  view! { (view.get_clone()) }
+}
+
 #[component]
 pub fn App<G: Html>() -> View<G> {
 
@@ -18,13 +40,10 @@ pub fn App<G: Html>() -> View<G> {
 
   view! {
     main() {
-      Index {
-        scroll::Scroll
-        br()
-        cartons::Cartons
-        br()
-        possize::PosSize
-      }
+      Router(
+        integration=HistoryIntegration::new(),
+        view=switch
+      )
     }
   }
 }
@@ -89,9 +108,10 @@ pub fn Index<G: Html>(children: Children<G>) -> View<G> {
         div(style="margin: 16px;") {
           h1() {"webtric=web+metric"}
           NavLinks(list=vec![
-            ("#scroll", "test scroll"),
-            ("#cartons", "test cartons"),
-            ("#possize", "test possize")
+            ("/", "index"),
+            ("/scroll", "test scroll"),
+            ("/cartons", "test cartons"),
+            ("/possize", "test possize")
           ])
         }
         br()

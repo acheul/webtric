@@ -68,26 +68,23 @@ pub fn Cartons<G: Html>() -> View<G> {
   }));
 
   view! {
-    h1(style="margin-left: 16px;", id="cartons") { "Test Cartons"}
-    div(style="margin: 8px 16px;") {
-      div() { "resize cartons with resizer(blue bar)" }
-      div() { r#"carton 0 and 2 can be "zeroed""# }
-    }
-    div(style="margin: 8px 16px;") {
-      div() { label(for="lateral") { "lateral: " (if lateral.get() {"horizontal"} else {"vertical"}) }
-      input(type="checkbox", bind:checked=lateral, id="lateral") }
+    Index {
+      h1(style="margin-left: 16px;") { "Test Cartons"}
+      div(style="margin: 8px 16px;") {
+        div() { label(for="lateral") { "lateral: " (if lateral.get() {"horizontal"} else {"vertical"}) }
+        input(type="checkbox", bind:checked=lateral, id="lateral") }
+  
+        div() { label(for="independent") { "resize independently: " (independent.get()) }
+        input(type="checkbox", bind:checked=independent, id="independent") }
+      }
+  
+      div(style="margin: 8px 6px;") {
+        button(style="margin-right: 8px;", on:click=move |_| { push_carton(cartons, vec![update_by, update_scroll], Some(complex)) }) {"+ push to last"}
+        button(on:click=move |_| { pop_carton(cartons, vec![update_by, update_scroll]) }) {"- pop up first"}
+      }
 
-      div() { label(for="independent") { "resize independently: " (independent.get()) }
-      input(type="checkbox", bind:checked=independent, id="independent") }
+      (demo.get_clone())
     }
-
-    div(style="margin: 8px 6px;") {
-      span() { "zero: " }
-      button(style="margin-right: 8px;", on:click=move |_| { push_carton(cartons, vec![update_by, update_scroll], Some(complex)) }) {"+ push to last"}
-      button(on:click=move |_| { pop_carton(cartons, vec![update_by, update_scroll]) }) {"- pop up first"}
-    }
-
-    (demo.get_clone())
   }
 }
 
