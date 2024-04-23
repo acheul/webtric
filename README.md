@@ -18,3 +18,8 @@ The page is built on Sycamore. It's src directory is at repository's `/demo-syca
   * Check repository's `/demo-sycamore` for sycamore application.
 * ~~Feature `letops` suppoerts some [leptos](https://crates.io/crates/leptos) native functions~~
   * It's not yet mature.
+
+
+## Dev Log
+* ver `0.1.0` -> `0.1.1`
+  * added feature flags missed in `0.1.0`
