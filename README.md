@@ -9,7 +9,7 @@ A wasm library to handle some metric matters of front web environment
 * **Reactive positioning** of tooltips or menubars => mod `possize`
 * and `sizon`
 
-See [the demo page](https://acheul.github.io/webtric) for live demo.
+See [**the demo page**](https://acheul.github.io/webtric) for live demo.
 The page is built on Sycamore. It's src directory is at repository's `/demo-sycamore`.
 
 ## Features
