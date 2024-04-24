@@ -87,7 +87,7 @@ pub fn Index<G: Html>(children: Children<G>) -> View<G> {
 
       div(ref=scrolling_ref, class="full no-scrollbar scrolling") {
         div(style="margin: 16px;") {
-          h1() {"webtric=web+metric"}
+          h1() {"📏 webtric=web+metric"}
           div(style="display: flex; align-items: center;") {
             a(href="https://crates.io/crates/webtric", title="crate") {
               img(src="https://img.shields.io/crates/v/webtric")
