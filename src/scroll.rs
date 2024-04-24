@@ -83,7 +83,8 @@ impl UniScrollMetric {
 
   /// extended scroll ratio, subtracting client size to the scroll size
   pub fn extended_scroll_ratio(&self) -> f64 {
-    self.scroll_pos/(self.scroll_size-self.client_size)
+    let r = self.scroll_pos/(self.scroll_size-self.client_size);
+    if r.is_normal() { r } else { 0. }
   }
 
   pub fn client_ratio(&self) -> f64 {
