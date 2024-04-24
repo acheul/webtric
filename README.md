@@ -1,4 +1,4 @@
-# Webtric = Web + Metric
+# 📏 Webtric = Web + Metric
 
 [![Crates.io](https://img.shields.io/crates/v/webtric)](https://crates.io/crates/webtric)
 [![docs.rs](https://img.shields.io/docsrs/webtric?label=docs.rs)](https://docs.rs/webtric)
