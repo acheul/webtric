@@ -83,11 +83,13 @@ main {
 }
 
 .scroll-thumb-x {
+  touch-action: none;
   position: absolute;
   transition: left .1s, opacity .5s;
   top: 0; height: 100%;
 }
 .scroll-thumb-y {
+  touch-action: none;
   position: absolute;
   transition: top .1s, opacity .5s;
   left: 0; width: 100%;
@@ -134,6 +136,7 @@ main {
   position: absolute;
   background-color: dodgerblue;
   z-index: 5;
+  touch-action: none;
 }
 
 .resizer-x {
@@ -167,6 +170,7 @@ main {
   align-items: center;
   cursor: grab;
   user-select: none;
+  touch-action: none;
 }
 
 .possize-abs {
