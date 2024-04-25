@@ -640,7 +640,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('demo-sycamore-32633b162e9c8f2b_bg.wasm', import.meta.url);
+        input = new URL('demo-sycamore-6ed788dd2e7e88f5_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 

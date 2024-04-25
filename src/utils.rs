@@ -223,6 +223,12 @@ pub type PointerMoveUpBoxRaws = BoxRaws<(*mut Closure<dyn FnMut(PointerEvent)>, 
 ///   * Mind that returned [PointerMoveUpBoxRaws] has raw pointers. Make sure to destruct their memory on any clean up scenario.
 ///     To destruct them, use `clean()` method of `BoxRaws`. Check out [rawn](https://crates.io/crates/rawn) for more info about `BoxRaws`.
 /// 
+/// # Tips
+/// * To prevent `pointercancel` of pointerevent attached element, consider these:
+///   * deactivate `dragstart`
+///   * add css style `{ touch-action: none }`
+/// 
+/// 
 /// # Example
 /// ```
 /// # use wasm_bindgen::prelude::*;

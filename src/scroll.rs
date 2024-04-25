@@ -24,11 +24,11 @@
 //! 
 //! The "scroll thumb" is scrolling handle. It would be located under the "scroll track".
 //! With **pointerdown event** of it, we would be able to navigate scrolling position.
-//! (Movinng scroll thumb will make the srolling element scroll.)
+//! (Moving scroll thumb will make the srolling element scroll.)
 //! 
 //! ## [ScrollMetric] for event listeners
 //! The ScrollMetric struct has some associated functions
-//! to produce event listeners for scrolling element and scrollbar's elements as mentioed above.
+//! to produce event listeners for scrolling element and scrollbar's elements as mentioned above.
 //! 
 //! They are generalized at some levels,
 //! but more applicated ones are designed for **Sycamore**(version 0.9.0-beta.2 or later) with `sycamore` feature on.
