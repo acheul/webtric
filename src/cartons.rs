@@ -315,7 +315,8 @@ impl<T: Eq + Hash + FromStr + Clone + std::fmt::Debug> CartonsComplex<T> {
   ) -> f64 {
     let mut total_size = Self::get_total_size(data_sizes);
 
-    let mut blank = (wrap_size-total_size).floor();
+    // let mut blank = (wrap_size-total_size).floor();
+    let mut blank = wrap_size-total_size;
     if blank>0. {
       // 1. proportional distribution
       for (data, size) in data_sizes.iter_mut() {
